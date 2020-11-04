@@ -1,12 +1,16 @@
-# TopLeedcode
+###数据来源:
 
->数据来源:
->
->[LeetCode字节跳动企业题库高频算法top100](https://leetcode-cn.com/list/xhx0zp1m)
->
->[牛客网客户端高频算法](https://www.nowcoder.com/discuss/447791?source_id=profile_create&channel=-2)
->
->[小码哥恋上数据结构与算法精选面试题](https://juejin.im/post/6844904118100688904)
+[LeetCode字节跳动企业题库高频算法top100](https://leetcode-cn.com/list/xhx0zp1m)
+
+[牛客网客户端高频算法](https://www.nowcoder.com/discuss/447791?source_id=profile_create&channel=-2)
+
+[小码哥恋上数据结构与算法精选面试题](https://juejin.im/post/6844904118100688904)
+
+题目是按照[牛客网客户端高频算法](https://www.nowcoder.com/discuss/447791?source_id=profile_create&channel=-2)出现频率来排序的。
+相同题型大概有3道，类似题目也有几道，总题目数为72题。
+若时间比较紧，可以优先学习出现频率>1次的题目，大概近40题。
+
+若你想系统学习算法知识，我推荐你先学习[小码哥恋上数据结构与算法](https://github.com/rogertan30/Love-Leetcode)
 
 ```swift
 public class ListNode {
