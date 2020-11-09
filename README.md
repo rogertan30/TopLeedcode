@@ -2,7 +2,7 @@
 
 该清单主要针对客户端大厂算法面试。题目是按照[牛客网客户端高频算法](https://www.nowcoder.com/discuss/447791?source_id=profile_create&channel=-2)统计的算法出现频率来排序的。
 
-清单总题目数为72题，其中相同题型大概有3道，类似题目也有几道，实际也就60多题。如果准备面试的时间比较短，建议优先学习出现频率>1次的题目，大概近40题。要达到大厂面试算法要求，要能够在leetcode或牛客网上默写所有算法，并且能够口述算法每一步的作用(大多数的题目我都有备注)。许多算法经典思想，也要做了解，搞不懂的多去leetcode题解区看看。
+清单总题目数为70题，其中相同题型大概有3道，类似题目也有几道，实际也就60多题。如果准备面试的时间比较短，建议优先学习出现频率>1次的题目，大概近40题。要达到大厂面试算法要求，要能够在leetcode或牛客网上默写所有算法，并且能够口述算法每一步的作用(大多数的题目我都有备注)。许多算法经典思想，也要做了解，搞不懂的多去leetcode题解区看看。
 
 每道题都有很多种解法，我给出来的题解一般是推荐度比较高或比较经典的解法，题目是以swift实现的，欢迎补充其他语言版本。
 
@@ -58,9 +58,11 @@ public class TreeNode {
  输出: 6
  解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
  
- 注意：1. result的初始值为第一个元素。
  */
+
 func maxSubArray(_ nums: [Int]) -> Int {
+    
+    // 注意：result的初始值为第一个元素。
     // 1. 创建变量
     var result = nums[0] // result：连续子数组的最大和
     var sum = 0 // sum：遍历数组元素和
@@ -93,6 +95,8 @@ func maxSubArray(_ nums: [Int]) -> Int {
  输出: 5
  */
 
+// 该题目自己实现了快速排序
+// 小码哥快速排序讲解: https://juejin.im/post/6844904095250120718
 var curNums = [Int]()
 
 func findKthLargest(_ nums: [Int], _ k: Int) -> Int {
@@ -201,6 +205,9 @@ func partition(_ nums: inout [Int], left: Int, right: Int) -> Int {
  难度：简单
  
  将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的
+ 输入：1->2->4, 1->3->4
+ 输出：1->1->2->3->4->4
+ 
  */
 
 // 双指针法
@@ -248,6 +255,9 @@ func mergeTwoLists2(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
  题号：剑指 Offer 09. 用两个栈实现队列
  出现频率：6
  难度：简单
+ 
+ 用两个栈实现一个队列。队列的声明如下，请实现它的两个函数 appendTail 和 deleteHead ，分别完成在队列尾部插入整数和在队列头部删除整数的功能。(若队列中没有元素，deleteHead 操作返回 -1 )
+
  */
 
 var stack1 = [Int]()
@@ -300,9 +310,15 @@ func reverseList(_ head: ListNode?) -> ListNode? {
  题号：236. 二叉树的最近公共祖先
  出现频率：6
  难度：中等
+ 
+ 输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+ 输出: 3
+ 解释: 节点 5 和节点 1 的最近公共祖先是节点 3。
+
  */
 
 /*
+ https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/solution/236-er-cha-shu-de-zui-jin-gong-gong-zu-xian-hou-xu/
  解题思路如下：
  1、当root为空时，返回nil
  2、如果root的值和p或者q的值相等时，直接返回root
@@ -329,6 +345,8 @@ func lowestCommonAncestor(_ root: TreeNode?, _ p: TreeNode?, _ q: TreeNode?) -> 
  题号：160.相交链表
  出现频率：6
  难度：简单
+ 
+ 编写一个程序，找到两个单链表相交的起始节点。
  */
 
 /*
@@ -592,6 +610,8 @@ func reverseString(_ s: inout [Character]) {
  题号：543.二叉树的直径
  出现频率：4
  难度：简单
+ 
+ 给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。
  */
 
 var currentDiameter = 0
@@ -656,6 +676,16 @@ func preorderTraversal(_ root: TreeNode?) -> [Int] {
  题号：121. 买卖股票的最佳时机
  出现频率：4
  难度：简单
+ 
+ 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
+
+ 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。
+
+ 输入: [7,1,5,3,6,4]
+ 输出: 5
+ 解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+      注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+
  */
 
 //遍历数组，更新最小值
@@ -804,6 +834,12 @@ func postorderTraversal(_ root: TreeNode?) -> [Int] {
  难度：简单
  */
 
+/*
+ 题号：226. 翻转二叉树
+ 出现频率：2
+ 难度：简单
+ */
+
 func mirrorTree(_ root: TreeNode?) -> TreeNode? {
     guard let root = root else { return nil }
     let right = mirrorTree(root.right)
@@ -840,6 +876,13 @@ func mirrorTree2(_ root: TreeNode?) -> TreeNode? {
  题号：1. 两数之和
  出现频率：3
  难度：简单
+ 
+ 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+ 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
+
+ 给定 nums = [2, 7, 11, 15], target = 9
+ 因为 nums[0] + nums[1] = 2 + 7 = 9
+ 所以返回 [0, 1]
  */
 
 func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
@@ -860,6 +903,10 @@ func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
  题号：3. 无重复字符的最长子串
  出现频率：3
  难度：中等
+ 
+ 输入: "abcabcbb"
+ 输出: 3
+ 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
  */
 
 func lengthOfLongestSubstring(_ s: String) -> Int {
@@ -883,6 +930,8 @@ func lengthOfLongestSubstring(_ s: String) -> Int {
  题号：142. 环形链表 II
  出现频率：3
  难度：中等
+ 
+ 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
  */
 
 func detectCycle(_ head: ListNode?) -> ListNode? {
@@ -957,82 +1006,38 @@ func reverseWords(_ s: String) -> String {
 /* 25-------------------------------------------------- */
 
 /*
- 题号：226. 翻转二叉树
+ 题号：189. 旋转数组
  出现频率：2
  难度：简单
+ 
+ 给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
+
+ 输入: [1,2,3,4,5,6,7] 和 k = 3
+ 输出: [5,6,7,1,2,3,4]
+ 解释:
+ 向右旋转 1 步: [7,1,2,3,4,5,6]
+ 向右旋转 2 步: [6,7,1,2,3,4,5]
+ 向右旋转 3 步: [5,6,7,1,2,3,4]
+
  */
 
-func invertTree(_ root: TreeNode?) -> TreeNode? {
-    guard let curRoot = root else { return root }
-    
-    let tmp = curRoot.left
-    curRoot.left = curRoot.right
-    curRoot.right = tmp
-    
-    invertTree(curRoot.left)
-    invertTree(curRoot.right)
-    
-    return root
-}
-
-func invertTree2(_ root: TreeNode?) -> TreeNode? {
-    if root == nil { return root }
-    
-    var queue: [TreeNode?] = [root]
-    
-    while !queue.isEmpty {
-        let node = queue.remove(at: 0)
-        
-        let left = node?.left
-        node?.left = node?.right
-        node?.right = left
-        
-        if node?.left != nil {
-            queue.append(node?.left)
-        }
-        
-        if node?.right != nil {
-            queue.append(node?.right)
-        }
+func rotate(_ nums: inout [Int], _ k: Int) {
+    for _ in 0..<k {
+        let last = nums.removeLast()
+        nums.insert(last, at: 0)
     }
-    return root
-}
-
-func invertTree3(_ root: TreeNode?) -> TreeNode? {
-    guard let root = root else { return nil }
-    let right = invertTree3(root.right)
-    let left = invertTree3(root.left)
-    root.right = left
-    root.left = right
-    return root
 }
 
 /* 26-------------------------------------------------- */
 
 /*
- 题号：189. 旋转数组
- 出现频率：2
- 难度：简单
- */
-
-func rotate_00(_ nums: inout [Int], _ k: Int) {
-    if nums.count == 0 || nums.count == 1 { return }
-    
-    var k = k
-    
-    while k != 0 {
-        let last = nums.popLast()!
-        nums.insert(last, at: 0)
-        k -= 1
-    }
-}
-
-/* 27-------------------------------------------------- */
-
-/*
  题号：300. 最长上升子序列
  出现频率：2
  难度：中等
+ 
+ 输入: [10,9,2,5,3,7,101,18]
+ 输出: 4
+ 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
  */
 
 func lengthOfLIS(_ nums: [Int]) -> Int {
@@ -1050,12 +1055,21 @@ func lengthOfLIS(_ nums: [Int]) -> Int {
     return dp.max()!
 }
 
-/* 28-------------------------------------------------- */
+/* 27-------------------------------------------------- */
 
 /*
  题号：15. 三数之和
  出现频率：2
  难度：中等
+ 
+ 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。
+
+ 给定数组 nums = [-1, 0, 1, 2, -1, -4]，
+ 满足要求的三元组集合为：
+ [
+   [-1, 0, 1],
+   [-1, -1, 2]
+ ]
  */
 
 func threeSum(_ nums: [Int]) -> [[Int]] {
@@ -1095,14 +1109,29 @@ func threeSum(_ nums: [Int]) -> [[Int]] {
     return Array(result)
 }
 
-/* 29-------------------------------------------------- */
+/* 28-------------------------------------------------- */
 
 /*
  题号：48. 旋转图像
  出现频率：2
  难度：中等
+ 
+ 给定 matrix =
+ [
+   [1,2,3],
+   [4,5,6],
+   [7,8,9]
+ ],
+
+ 原地旋转输入矩阵，使其变为:
+ [
+   [7,4,1],
+   [8,5,2],
+   [9,6,3]
+ ]
  */
 
+// 先将数组反转，再进行对角线交换即可
 func rotate(_ matrix: inout [[Int]]) {
     let n = matrix.count
     matrix.reverse()
@@ -1116,7 +1145,7 @@ func rotate(_ matrix: inout [[Int]]) {
     }
 }
 
-/* 30-------------------------------------------------- */
+/* 29-------------------------------------------------- */
 
 /*
  题号：94. 二叉树的中序遍历
@@ -1133,7 +1162,7 @@ func inorderTraversal(_ root: TreeNode?) -> [Int] {
     return result
 }
 
-/* 31-------------------------------------------------- */
+/* 30-------------------------------------------------- */
 
 /*
  题号：103. 二叉树的锯齿形层次遍历
@@ -1193,25 +1222,26 @@ private func dfs(_ node: TreeNode?, _ level: Int, _ res: inout [[Int]]) {
     dfs(node.right, level + 1, &res)
 }
 
-/* 32-------------------------------------------------- */
+/* 31-------------------------------------------------- */
 
 /*
  题号：70. 爬楼梯
  出现频率：2
  难度：简单
+ 
+ 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+ 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+ 注意：给定 n 是一个正整数。
  */
 
 func climbStairs(_ n: Int) -> Int {
-    var dp: Array = Array.init(repeating: 0, count: n + 1)
+    var dp = Array.init(repeating: 0, count: n + 1)
     dp[0] = 1
     dp[1] = 1
     
-    if n == 1 { return 1 }
-    
-    for i in 2...n {
-        dp[i] = dp[i - 1] + dp[i - 2]
+    for i in 1..<n {
+        dp[i+1] = dp[i] + dp[i-1]
     }
-    
     return dp[n]
 }
 
@@ -1228,7 +1258,7 @@ func climbStairs2(_ n: Int) -> Int {
     return r
 }
 
-/* 33-------------------------------------------------- */
+/* 32-------------------------------------------------- */
 
 /*
  题号：105. 从前序与中序遍历序列构造二叉树
@@ -1273,7 +1303,7 @@ func myBuildTree(_ preorder: [Int], _ inorder: [Int], _ preleft: Int, _ preright
     return root
 }
 
-/* 34-------------------------------------------------- */
+/* 33-------------------------------------------------- */
 
 /*
  题号：190. 颠倒二进制位
@@ -1292,12 +1322,14 @@ func reverseBits(_ n: Int) -> Int {
     return result
 }
 
-/* 35-------------------------------------------------- */
+/* 34-------------------------------------------------- */
 
 /*
  题号：41. 缺失的第一个正数
  出现频率：2
  难度：困难
+ 
+ 给你一个未排序的整数数组，请你找出其中没有出现的最小的正整数。
  */
 func firstMissingPositive(_ nums: [Int]) -> Int {
     guard nums.count > 0 else { return 1 }
@@ -1316,7 +1348,7 @@ func firstMissingPositive(_ nums: [Int]) -> Int {
     return nums.count + 1
 }
 
-/* 36-------------------------------------------------- */
+/* 35-------------------------------------------------- */
 
 /*
  题号：54. 螺旋矩阵
@@ -1324,40 +1356,47 @@ func firstMissingPositive(_ nums: [Int]) -> Int {
  难度：中等
  */
 
-/* 37-------------------------------------------------- */
+/* 36-------------------------------------------------- */
 
 /*
  题号：33. 搜索旋转排序数组
  出现频率：2
  难度：中等
+ 
+ 给你一个升序排列的整数数组 nums ，和一个整数 target 。
+ 假设按照升序排序的数组在预先未知的某个点上进行了旋转。（例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] ）。
+ 请你在数组中搜索 target ，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。
+
+ 输入：nums = [4,5,6,7,0,1,2], target = 0
+ 输出：4
  */
 
 func search(_ nums: [Int], _ target: Int) -> Int {
     
     if nums.count == 0 { return -1 }
     
-    var left = 0
-    var right = nums.count - 1
+    var l = 0
+    var r = nums.count - 1
     
     // 二分查找
-    while left <= right {
-        let mid = (left + right) / 2
+    while l <= r { //如果没有 = 那么当输入[1] 1 时，会return -1
+        let mid = (l + r) / 2
         
         if nums[mid] == target { return mid }
         
         //判断哪一边有序，在有序的一边判断target的位置。
-        if nums[0] <= nums[mid] {
+        if nums[l] < nums[mid] {
             //通过有序边缩小范围
-            if target >= nums[0] && target < nums[mid] {
-                right = mid - 1
+            if target >= nums[l] && target < nums[mid] {
+                r = mid - 1
             } else {
-                left = mid + 1
+                l = mid + 1
             }
         } else {
-            if target > nums[mid] && target <= nums[right] {
-                left = mid + 1
+            if target > nums[mid] && target <= nums[r] {
+                l = mid + 1
             } else {
-                right = mid - 1
+                r = mid - 1
             }
         }
     }
@@ -1365,12 +1404,17 @@ func search(_ nums: [Int], _ target: Int) -> Int {
     return -1
 }
 
-/* 38-------------------------------------------------- */
+/* 37-------------------------------------------------- */
 
 /*
  题号：62. 不同路径
  出现频率：2
  难度：中等
+ 
+ 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+ 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+ 问总共有多少条不同的路径？
+
  */
 
 //https://leetcode-cn.com/problems/unique-paths/solution/bu-tong-lu-jing-dong-tai-gui-hua-zu-he-fen-xi-java/
@@ -1378,10 +1422,10 @@ func search(_ nums: [Int], _ target: Int) -> Int {
 //dp[i][j] = dp[i][j-1] + dp[i-1][j]
 func uniquePaths(_ m: Int, _ n: Int) -> Int {
     
-    var dp = Array(repeating: Array(repeating: 0, count: m), count: n)
+    var dp = Array(repeating: Array(repeating: 0, count: n), count: m)
     
     for i in 0..<m { dp[i][0] = 1 }
-    for J in 0..<n { dp[0][J] = 1 }
+    for j in 0..<n { dp[0][j] = 1 }
     
     for i in 1..<m {
         for j in 1..<n {
@@ -1392,7 +1436,7 @@ func uniquePaths(_ m: Int, _ n: Int) -> Int {
 }
 
 
-/* 39-------------------------------------------------- */
+/* 38-------------------------------------------------- */
 
 /*
  题号：460. LFU缓存
@@ -1530,15 +1574,34 @@ class DLList {
     }
 }
 
-/* 40-------------------------------------------------- */
+/* 39-------------------------------------------------- */
 
 /*
  题号：113. 路径总和 II
  出现频率：2
  难度：中等
  
+ 题号：剑指 Offer 34. 二叉树中和为某一值的路径
+ 出现频率：1
+ 难度：中等
+ 
  给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。
  
+ 给定如下二叉树，以及目标和 sum = 22，
+ 5
+/ \
+4   8
+/   / \
+11  13  4
+/  \    / \
+7    2  5   1
+
+ 返回:
+
+ [
+    [5,4,11,2],
+    [5,8,4,5]
+ ]
  */
 
 var path = [Int]()
@@ -1556,4 +1619,1112 @@ func dfs(_ root: TreeNode?, _ sum: Int) {
     path.append(root.val)
     let tmp = sum - root.val
     if tmp == 0 && root.left == nil && root.right == nil {
+        res.append(path)
+    }
+    
+    dfs(root.left, tmp)
+    dfs(root.right, tmp)
+    
+    path.removeLast() // 重点，遍历完后，需要把当前节点remove出去，因为用的是同一个list对象来存所有的路径
+}
+
+/* 40-------------------------------------------------- */
+
+/*
+ 题号：240. 搜索二维矩阵 II
+ 出现频率：2
+ 难度：中等
+ 
+ 编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target。该矩阵具有以下特性：
+
+ 每行的元素从左到右升序排列。
+ 每列的元素从上到下升序排列。
+ 示例:
+
+ 现有矩阵 matrix 如下：
+
+ [
+   [1,   4,  7, 11, 15],
+   [2,   5,  8, 12, 19],
+   [3,   6,  9, 16, 22],
+   [10, 13, 14, 17, 24],
+   [18, 21, 23, 26, 30]
+ ]
+ 给定 target = 5，返回 true。
+
+ 给定 target = 20，返回 false。
+ */
+
+func searchMatrix(_ matrix: [[Int]], _ target: Int) -> Bool {
+    
+    for values in matrix {
+        if let lastValue = values.last, lastValue >= target {
+            for value in values {
+                if value == target {
+                    return true
+                }
+            }
+        }
+    }
+    return false
+    
+    /*
+    for i in matrix {
+        
+        if i.count == 0 { return false }
+        
+        if target <= i.last! {
+            for j in i {
+                if j == target {
+                    return true
+                }
+            }
+        }
+    }
+    return false
+ */
+}
+
+/* 41-------------------------------------------------- */
+
+/*
+ 题号：101. 对称二叉树
+ 出现频率：1
+ 难度：简单
+ 
+ 给定一个二叉树，检查它是否是镜像对称的。
+ 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
+
+     1
+    / \
+   2   2
+  / \ / \
+ 3  4 4  3
+
+ */
+
+func isSymmetric(_ root: TreeNode?) -> Bool {
+    guard let root = root else { return true }
+    return dfs(left: root.left, right: root.right)
+}
+
+func dfs(left: TreeNode?, right: TreeNode?) -> Bool {
+    if left == nil && right == nil {
+        return true
+    }
+    
+    if left == nil || right == nil {
+        return false
+    }
+    
+    if left!.val != right!.val {
+        return false
+    }
+    
+    return dfs(left: left!.left, right: right!.right) && dfs(left: left!.right, right: right!.left)
+}
+
+/* 42-------------------------------------------------- */
+
+/*
+ 题号：136. 只出现一次的数字
+ 出现频率：1
+ 难度：简单
+ 
+ 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+
+ 说明：
+
+ 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
+
+ 示例 1:
+
+ 输入: [2,2,1]
+ 输出: 1
+
+ */
+
+func singleNumber(_ nums: [Int]) -> Int {
+    //  第一反应用map
+    //  考虑到不适用额外空间，用异或
+    //  a ^ 0 = a
+    //  a ^ a = 0
+    //  a ^ b ^ a = a ^ a ^ b = 0 ^ b = b
+    return nums.reduce(0) { $0 ^ $1 }
+}
+
+func singleNumber2(_ nums: [Int]) -> Int {
+    var dic = Dictionary<Int, Int>()
+    
+    for i in nums {
+        var count = dic[i]
+        count = count == nil ? 1 : count! + 1
+        dic[i] = count
+    }
+    
+    for item in dic.keys {
+        let value = dic[item]
+        if value == 1 { return item }
+    }
+    return -1
+}
+
+/* 43-------------------------------------------------- */
+
+/*
+ 题号：328. 奇偶链表
+ 出现频率：1
+ 难度：中等
+ 
+ 给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。
+
+ 请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。
+
+ 示例 1:
+
+ 输入: 1->2->3->4->5->NULL
+ 输出: 1->3->5->2->4->NULL
+ */
+
+func oddEvenList(_ head: ListNode?) -> ListNode? {
+    
+    guard let head = head else {
+        return nil
+    }
+    
+    var odd: ListNode? = head //奇数
+    var even: ListNode? = head.next //偶数
+    let evenHead = even //保存头
+    
+    while even?.next != nil { // even != null && even!.next != null
+        odd!.next = odd!.next!.next
+        odd = odd!.next
+        even!.next = odd!.next
+        even = even!.next
+    }
+    odd!.next = evenHead
+    return head
+}
+
+/* 44-------------------------------------------------- */
+
+/*
+ 题号：162. 寻找峰值
+ 出现频率：1
+ 难度：中等
+ 
+ 峰值元素是指其值大于左右相邻值的元素。
+ 给定一个输入数组 nums，其中 nums[i] ≠ nums[i+1]，找到峰值元素并返回其索引。
+ 数组可能包含多个峰值，在这种情况下，返回任何一个峰值所在位置即可。
+ 你可以假设 nums[-1] = nums[n] = -∞。
+
+ 示例 1:
+
+ 输入: nums = [1,2,3,1]
+ 输出: 2
+ 解释: 3 是峰值元素，你的函数应该返回其索引 2。
+ 
+ 示例 2:
+
+ 输入: nums = [1,2,1,3,5,6,4]
+ 输出: 1 或 5
+ 解释: 你的函数可以返回索引 1，其峰值元素为 2；
+      或者返回索引 5， 其峰值元素为 6。
+ 
+ 说明:
+ 
+ 你的解法应该是 O(logN) 时间复杂度的。
+
+ */
+// 首先要注意题目条件，在题目描述中出现了 nums[-1] = nums[n] = -∞，这就代表着 只要数组中存在一个元素比相邻元素大，那么沿着它一定可以找到一个峰值
+
+
+func findPeakElement(_ nums: [Int]) -> Int {
+    var l = 0
+    var r = nums.count - 1
+    
+    while l < r {
+        let mid = ( l + r ) / 2
+        
+        if nums[mid] > nums[mid + 1] {
+            r = mid
+        } else {
+            l = mid + 1
+        }
+    }
+    return l
+}
+
+/* 45-------------------------------------------------- */
+
+/*
+ 题号：480. 滑动窗口中位数
+ 出现频率：1
+ 难度：困难
+ */
+
+/* 46-------------------------------------------------- */
+
+/*
+ 题号：88. 合并两个有序数组
+ 出现频率：1
+ 难度：简单
+ 
+ 给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
+
+ 说明：
+
+ 初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。
+ 你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+  
+ 示例：
+
+ 输入：
+ nums1 = [1,2,3,0,0,0], m = 3
+ nums2 = [2,5,6],       n = 3
+
+ 输出：[1,2,2,3,5,6]
+ */
+
+func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
+    
+    var cur = m + n - 1
+    var i1 = m - 1
+    var i2 = n - 1
+    
+    while i2 >= 0 {
+        if i1 >= 0 && nums1[i1] >= nums2[i2] {
+            nums1[cur] = nums1[i1]
+            cur -= 1
+            i1 -= 1
+        } else {
+            nums1[cur] = nums2[i2]
+            cur -= 1
+            i2 -= 1
+        }
+    }
+}
+
+/* 47-------------------------------------------------- */
+
+/*
+ 题号：322. 零钱兑换
+ 出现频率：1
+ 难度：中等
+ 
+ 给定不同面额的硬币coins和一个总金额amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额,返回-1。
+
+ 示例 1：
+
+ 输入：coins = [1, 2, 5], amount = 11
+ 输出：3
+ 解释：11 = 5 + 5 + 1
+ */
+
+func coinChange(_ coins: [Int], _ amount: Int) -> Int {
+    var dp = Array.init(repeating: Int.max, count: amount + 1)
+    dp[0] = 0
+    
+    for i in 0...amount { // 0...amount 为了防止输入coins: [1], amount: 0, 遍历条件变成0...1
+        for coin in coins {
+            if coin <= i, dp[i - coin] != Int.max { // dp[i-coin] != Int.max 为了防止输入coins: [2], amount: 3
+                dp[i] = min(dp[i], dp[i-coin]+1)
+            }
+        }
+    }
+    return dp[amount] == Int.max ? -1 : dp[amount]
+}
+
+/* 48-------------------------------------------------- */
+
+/*
+ 题号：283. 移动零
+ 出现频率：1
+ 难度：简单
+ 
+ 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+
+ 示例:
+
+ 输入: [0,1,0,3,12]
+ 输出: [1,3,12,0,0]
+ 
+ 说明:
+
+ 必须在原数组上操作，不能拷贝额外的数组。
+ 尽量减少操作次数。
+ 
+ https://leetcode-cn.com/problems/move-zeroes/solution/dong-hua-yan-shi-283yi-dong-ling-by-wang_ni_ma/
+ */
+
+func moveZeroes(_ nums: inout [Int]) {
+    var b = 0
+    for a in 0..<nums.count {
+        //1.遍历数组，如果不为0，则与b替换位置，最终将所有不等于0的数放在数组左侧。
+        if nums[a] != 0 {
+            //2.如果 a == b 则没必要交换
+            if nums[a] != nums[b] {
+                let temp = nums[b]
+                nums[b] = nums[a]
+                nums[a] = temp
+            }
+            b += 1
+        }
+    }
+}
+
+/* 49-------------------------------------------------- */
+
+/*
+ 题号：112. 路径总和
+ 出现频率：1
+ 难度：简单
+ */
+
+func hasPathSum(_ root: TreeNode?, _ sum: Int) -> Bool {
+    //1. 退出条件1
+    guard let root = root else { return false }
+    
+    //2. 退出条件2
+    if root.val == sum, root.left == nil, root.right == nil {
+        return true
+    }
+    
+    let target = sum - root.val
+    //3.递归
+    return hasPathSum(root.left, target) || hasPathSum(root.right, target)
+}
+
+/* 50-------------------------------------------------- */
+
+/*
+ 题号：2. 两数相加
+ 出现频率：1
+ 难度：中等
+ 
+ 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
+ 如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
+ 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+
+ 示例：
+
+ 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
+ 输出：7 -> 0 -> 8
+ 原因：342 + 465 = 807
+
+ */
+
+// 作者自己实现的算法
+func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
+    var l1 = l1
+    var l2 = l2
+    var needAdd = 0
+    
+    let newHead = ListNode.init(-1)
+    var cur = newHead
+    
+    while l1 != nil || l2 != nil {
+        let new = (l1?.val ?? 0) + (l2?.val ?? 0) + needAdd
+        needAdd = new / 10
+        cur.next = ListNode.init(new % 10)
+        
+        cur = cur.next!
+        l1 = l1?.next
+        l2 = l2?.next
+    }
+    
+    if needAdd == 1 {
+        cur.next = ListNode.init(1)
+    }
+    
+    return newHead.next
+}
+
+/* 51-------------------------------------------------- */
+
+/*
+ 题号：257. 二叉树的所有路径
+ 出现频率：1
+ 难度：简单
+ */
+
+var res3 = [String]()
+
+func binaryTreePaths(_ root: TreeNode?) -> [String] {
+    bfs(root, "")
+    return res3
+}
+
+func bfs(_ root:TreeNode? ,_ s:String) {
+
+    guard let root = root else { return }
+
+    let result = s + "\(root.val)"
+
+    if root.left == nil && root.right == nil {
+        res3.append(result)
+    }
+
+    bfs(root.left, result + "->")
+    bfs(root.right, result + "->")
+}
+
+/* 52-------------------------------------------------- */
+
+/*
+ 题号：46. 全排列
+ 出现频率：1
+ 难度：中等
+ */
+
+var result = [[Int]]()
+var path3 = [Int]()
+var used = [Int: Bool]()
+
+func permute(_ nums: [Int]) -> [[Int]] {
+    guard nums.count != 0 else {
+        return result
+    }
+    
+    dfs(nums: nums, depth: 0)
+    return result
+}
+
+func dfs(nums: [Int], depth: Int) {
+    
+    if nums.count == depth {
+        result.append(path3)
+        return
+    }
+    
+    for i in 0 ..< nums.count {
+        if used[nums[i]] ?? false == false {
+            path3.append(nums[i])
+            used[nums[i]] = true
+            
+            dfs(nums: nums, depth: depth + 1)
+            
+            used[nums[i]] = false
+            path3.removeLast()
+        }
+    }
+}
+
+/* 53-------------------------------------------------- */
+
+/*
+ 题号：剑指 Offer 21. 调整数组顺序使奇数位于偶数前面
+ 出现频率：1
+ 难度：简单
+ */
+
+func exchange(_ nums: [Int]) -> [Int] {
+    // 1.创建两个数组, oddNumArr(存储奇数)与 evenNumArr(存储偶数)。
+    var oddNumArr = [Int]()
+    var evenNumArr = [Int]()
+    
+    // 2.遍历给定数组中的所有元素, 遇到奇数就存进oddNumArr, 遇到偶数就存进 evenNumArr
+    for i in nums {
+        if i % 2 == 0 {
+            evenNumArr.append(i)
+        } else {
+            oddNumArr.append(i)
+        }
+    }
+    // 3.最后返回 oddNumArr+evenNumArr
+    return oddNumArr + evenNumArr
+}
+
+func exchange2(_ nums: [Int]) -> [Int] {
+    var nums = nums
+    var i = 0
+    var j = nums.count - 1
+    while i < j {
+        while i < j, nums[i] % 2 == 1 {
+            i += 1
+        }
+        while i < j, nums[j] % 2 == 0 {
+            j -= 1
+        }
+        (nums[i], nums[j]) = (nums[j], nums[i])
+    }
+    return nums
+}
+
+
+
+/* 54-------------------------------------------------- */
+
+/*
+ 题号：232. 用栈实现队列
+ 出现频率：1
+ 难度：简单
+ */
+
+//相同题目 剑指 Offer 09. 用两个栈实现队列
+
+
+/* 55-------------------------------------------------- */
+
+/*
+ 题号：234. 回文链表
+ 出现频率：1
+ 难度：简单
+ */
+
+func isPalindrome(_ head: ListNode?) -> Bool {
+    var newHead = head
+    var list = [Int]()
+    
+    // 1.将链表加入到数组中
+    while newHead != nil {
+        list.append(newHead!.val)
+        newHead = newHead?.next
+    }
+    
+    // 2.双指针比较数组两端是否相等
+    var start = 0
+    var end = list.count - 1
+    while start < end {
+        if list[start] != list[end] {
+            return false
+        }
+        start += 1
+        end -= 1
+    }
+    return true
+}
+
+/* 56-------------------------------------------------- */
+
+/*
+ 题号：739. 每日温度
+ 出现频率：1
+ 难度：中等
+ 
+ 可以维护一个存储下标的单调栈，从栈底到栈顶的下标对应的温度列表中的温度依次递减。如果一个下标在单调栈里，则表示尚未找到下一次温度更高的下标。
+ 
+ 正向遍历温度列表。对于温度列表中的每个元素 T[i]，如果栈为空，则直接将 i 进栈，如果栈不为空，则比较栈顶元素 prevIndex 对应的温度 T[prevIndex] 和当前温度 T[i]，如果 T[i] > T[prevIndex]，则将 prevIndex 移除，并将 prevIndex 对应的等待天数赋为 i - prevIndex，重复上述操作直到栈为空或者栈顶元素对应的温度小于等于当前温度，然后将 i 进栈。
+ 
+ 为什么可以在弹栈的时候更新 ans[prevIndex] 呢？因为在这种情况下，即将进栈的 i 对应的 T[i] 一定是 T[prevIndex] 右边第一个比它大的元素，试想如果 prevIndex 和 i 有比它大的元素，假设下标为 j，那么 prevIndex 一定会在下标 j 的那一轮被弹掉。
+ 
+ 由于单调栈满足从栈底到栈顶元素对应的温度递减，因此每次有元素进栈时，会将温度更低的元素全部移除，并更新出栈元素对应的等待天数，这样可以确保等待天数一定是最小的。
+ 
+ */
+
+func dailyTemperatures(_ T: [Int]) -> [Int] {
+    var result: [Int] = Array(repeating: 0, count: T.count)
+    var stack: [Int] = []
+    
+    for i in 0 ..< T.count {
+        while let index = stack.last, T[i] > T[index] {
+            stack.removeLast()
+            result[index] = i - index
+        }
+        stack.append(i)
+    }
+    return result
+}
+
+/* 57-------------------------------------------------- */
+
+/*
+ 题号：7. 整数反转
+ 出现频率：1
+ 难度：简单
+ */
+
+func reverse(_ x: Int) -> Int {
+    
+    var x = x //旧的值
+    var result = 0 //新的值
+    
+    while x != 0 {
+        // curX % 10 取模，即最后一位的值
+        // curX / 10 除以10，即去掉最后一位
+        result = result * 10 + x % 10
+        x = x / 10
+        
+        // 每次转变后检查是否溢出
+        if result > Int32.max || result < Int32.min {
+            return 0
+        }
+    }
+    return result
+}
+
+/* 58-------------------------------------------------- */
+
+/*
+ 题号：92. 反转链表 II
+ 出现频率：1
+ 难度：中等
+ */
+
+func reverseBetween(_ head: ListNode?, _ m: Int, _ n: Int) -> ListNode? {
+    
+    let newHead = ListNode.init(-1)
+    newHead.next = head
+    
+    var pre: ListNode? = newHead
+    var cur: ListNode? = head
+    
+    //移动到反转起始位置
+    for _ in 1..<m{
+        pre = cur
+        cur = cur?.next
+    }
+     
+    let beign = pre//记录反转第一个的前一个
+    let end = cur//记录反转的第一个
+     
+    //反转m到n个元素
+    for _ in m...n {
+        let next = cur?.next
+        cur?.next = pre
+        pre = cur
+        cur = next
+    }
+     
+    beign?.next = pre//重新标记反转后的头
+    end?.next = cur//重新标记反转后的尾
+    
+    return newHead.next
+}
+
+/* 59-------------------------------------------------- */
+
+/*
+ 题号：662. 二叉树最大宽度
+ 出现频率：1
+ 难度：中等
+ */
+//https://leetcode-cn.com/problems/maximum-width-of-binary-tree/solution/javashuang-bai-yi-chong-you-dian-tou-ji-qu-qiao-de/
+//替换成这种算法
+
+func widthOfBinaryTree(_ root: TreeNode?) -> Int {
+    
+    guard let root = root else { return 0}
+    
+    var queue: [TreeNode] = [root]
+    var list: [Int] = [1]
+    var maxLen = 1
+    
+    while !queue.isEmpty {
+        let size = queue.count
+        
+        for _ in 0..<size {
+            let node = queue.removeFirst()
+            let index = list.removeFirst()
+            
+            if let left = node.left {
+                queue.append(left)
+                list.append(2 &* index)
+            }
+            if let right = node.right {
+                queue.append(right)
+                list.append(2 &* index &+ 1)
+            }
+        }
+        
+        if list.count >= 2 { //注意临界条件是大于等于2，因为count为1宽度也是1
+            maxLen = max(maxLen, list.last! &- list.first! &+ 1)
+        }
+    }
+    return maxLen
+}
+
+/* 60-------------------------------------------------- */
+
+/*
+ 题号：23. 合并K个升序链表
+ 出现频率：1
+ 难度：困难
+ */
+//思路：遍历k个排序链表，记录到字典中，字典的key是链表中的val，字典的value是k个链表中val出现的次数。然后通过字典再生成新的链表。算法的时间复杂度应该是O(nk),n是排序列表中元素的个数。
+
+func mergeKLists(_ lists: [ListNode?]) -> ListNode? {
+    
+    var result: ListNode?
+    var dic = [Int: Int]()
+    var cur: ListNode?
+    
+    // 1.遍历k个排序链表，记录到字典中，字典的key是链表中的val，字典的value是k个链表中val出现的次数
+    for node in lists {
+        cur = node
+        while cur != nil {
+            dic.updateValue(dic[cur!.val] ?? 0 + 1, forKey: cur!.val)
+            cur = cur!.next
+        }
+    }
+    
+    // 2.通过字典再生成新的链表
+    for key in dic.keys.sorted() {
+        for _ in 0..<dic[key]! {
+            if result == nil {
+                result = ListNode.init(key)
+                cur = result
+                continue
+            }
+            
+            cur?.next = ListNode.init(key)
+            cur = cur?.next
+        }
+    }
+    
+    return result
+}
+
+
+/* 61-------------------------------------------------- */
+
+/*
+ 题号：141. 环形链表
+ 出现频率：1
+ 难度：简单
+ */
+func hasCycle(_ head: ListNode?) -> Bool {
+    
+    let newHead = ListNode.init(-1)
+    newHead.next = head
+    
+    // 1. 声明快慢指针
+    var slow: ListNode? = newHead
+    var fast: ListNode? = newHead
+    
+    // 2. 快慢指针开始移动
+    while fast != nil {
+        slow = slow?.next
+        fast = fast?.next?.next
+        
+        // 3. 找到环，重置慢指针
+        if slow === fast {
+            return true
+        }
+    }
+    return false
+}
+
+/* 62-------------------------------------------------- */
+
+/*
+ 题号：140. 单词拆分 II
+ 出现频率：1
+ 难度：困难
+ */
+
+var map = [String: [String]]()
+
+func wordBreak(_ s: String, _ wordDict: [String]) -> [String] {
+    return helper(s, wordDict)
+}
+
+func helper(_ s: String, _ wordDict: [String]) -> [String] {
+    if s.count == 0 {
+        return [""]
+    }
+    
+    if let value = map[s] {
+        return value
+    }
+    
+    var res = [String]()
+    
+    for word in wordDict {
+        if s.hasPrefix(word) {
+            let subs = helper(String(s[word.endIndex...]), wordDict)
+            for sub in subs {
+                res.append(word + (sub == "" ? "" : " ") + sub)
+            }
+        }
+    }
+    map[s] = res
+    
+    return res
+}
+
+/* 63-------------------------------------------------- */
+
+/*
+ 题号：86. 分隔链表
+ 出现频率：1
+ 难度：中等
+ */
+
+// 双指针
+func partition(_ head: ListNode?, _ x: Int) -> ListNode? {
+        
+    var curHead = head
+    
+    let lHead = ListNode(0)
+    var lCur = lHead
+    
+    let rHead = ListNode(0)
+    var rCur = rHead
+    
+    while curHead != nil {
+        if curHead!.val < x {
+            lCur.next = curHead
+            lCur = curHead!
+        } else {
+            rCur.next = curHead
+            rCur = curHead!
+        }
+        curHead = curHead?.next
+    }
+    
+    lCur.next = rHead.next
+    rCur.next = nil
+
+    return lHead.next
+}
+
+/* 64-------------------------------------------------- */
+
+/*
+ 题号：209. 长度最小的子数组
+ 出现频率：1
+ 难度：中等
+ 
+ 输入：s = 7, nums = [2,3,1,2,4,3]
+ 输出：2
+ 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
+ */
+func minSubArrayLen(_ s: Int, _ nums: [Int]) -> Int {
+    var minLen: Int = .max
+    var sum = 0
+    var left = 0
+    
+    for right in 0 ..< nums.count {
+        sum += nums[right]
+        
+        while sum >= s {
+            minLen = min(right - left + 1, minLen)
+            
+            //移除最左边的数，再试图进行一次比较
+            sum -= nums[left]
+            left += 1
+        }
+    }
+    
+    return minLen == .max ? 0 : minLen
+}
+
+/* 65-------------------------------------------------- */
+
+/*
+ 题号：122. 买卖股票的最佳时机 II
+ 出现频率：1
+ 难度：简单
+ */
+
+//既然不限制交易次数, 那么把能赚钱的交易都累加上就是最大利润了.
+func maxProfit2(_ prices: [Int]) -> Int {
+    var result = 0
+    
+    for i in 1..<prices.count {
+        let cur = prices[i] - prices[i - 1]
+        result += cur > 0 ? cur : 0
+    }
+    return result
+}
+
+/* 66-------------------------------------------------- */
+
+/*
+ 题号：69. x 的平方根
+ 出现频率：1
+ 难度：简单
+ */
+
+func mySqrt(_ x: Int) -> Int {
+    var l = 0
+    var r = x
+    var result = 0
+    
+    while l <= r {
+        let mid = l + ( r - l ) / 2
+        
+        if mid * mid <= x {
+            l = mid + 1
+            result = mid
+        } else {
+            r = mid - 1
+        }
+    }
+    
+    return result
+}
+
+/* 67-------------------------------------------------- */
+
+/*
+ 题号：128. 最长连续序列
+ 出现频率：1
+ 难度：困难
+ 
+ 输入: [100, 4, 200, 1, 3, 2]
+ 输出: 4
+ 解释: 最长连续序列是 [1, 2, 3, 4]。它的长度为 4。
+ */
+
+func longestConsecutive(_ nums: [Int]) -> Int {
+    // 1.先将数组插入到集合中
+    let set = Set(nums)
+    
+    var maxLength = 0
+    for item in set {
+        // 2. 遍历集合，如果集合不包含当前元素的上一个，则说明可以从这个元素开始计数(说明没有计过数)
+        if !set.contains((item-1)) {
+            // 3. 从该数开始计数，如果存在下一个，则+1，否则进入下一次循环
+            var next = item + 1
+            var curLength = 1 //此次循环最大长度
+            while set.contains(next) {
+                curLength += 1
+                next += 1
+            }
+            maxLength = max(maxLength, curLength)
+        }
+    }
+    // 4.返回结果即可
+    return maxLength
+}
+
+/* 68-------------------------------------------------- */
+
+/*
+ 题号：剑指 Offer 36. 二叉搜索树与双向链表
+ 出现频率：1
+ 难度：中等
+ https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/solution/mian-shi-ti-36-er-cha-sou-suo-shu-yu-shuang-xian-5/
+ */
+    var head: TreeNode?, pre: TreeNode?
+
+    func treeToDoublyList(_ root: TreeNode?) -> TreeNode? {
+        guard root != nil else {
+            return nil
+        }
+        dfs2(root)
+        /** 递归完成后:
+         - `pre`已移至最后，可视为`tail`
+         */
+        head!.left = pre
+        pre!.right = head
+        return head
+    }
+    
+    /** 递归逻辑:
+     - 可视为`pre`不断与`cur/back`双向绑定
+     - 转换图形为`Z`，即`中序遍历（LDR）`
+     */
+    func dfs2(_ root: TreeNode?) {
+        /// 结束条件
+        guard let root = root else { return }
+        
+        /// 开始规划左节点，确定前节点`pre`
+        dfs2(root.left)
+        
+        /**:
+         1. `pre`节点若不存在则为头结点
+         */
+        if pre == nil {
+            head = root
+        }
+        
+        /** 最下层逻辑:
+         1. 从`head`节点开始，前节点`pre`不断上移
+         2. 从而双向绑定
+         */
+        else {
+            pre!.right = root
+        }
+        root.left = pre
+        pre = root
+        /**:
+         - 规划右子树
+         - `pre`上移完成后，应对右子树，`pre`需要下移直到右子树递归完成后
+         - 后移继续规划左节点
+         */
+        dfs2(root.right)
+    }
+
+/* 69-------------------------------------------------- */
+
+/*
+ 题号：124. 二叉树中的最大路径和
+ 出现频率：1
+ 难度：困难
+ */
+
+var pathMax = Int.min
+
+func maxPathSum(_ root: TreeNode?) -> Int {
+    dfs(root)
+    return pathMax
+}
+
+//求一个节点(root)的最大贡献值,具体而言，就是在以该节点为根节点的子树中寻找以该节点为起点的一条路径，使得该路径上的节点值之和最大。
+func dfs(_ root: TreeNode?) -> Int{
+   
+    guard let root = root else { return 0 }
+    
+    // 递归计算左右子节点的最大贡献值
+    // 只有在最大贡献值大于 0 时，才会选取对应子节点
+    let leftMax = max(dfs(root.left), 0)
+    let rightMax = max(dfs(root.right), 0)
+    
+    // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
+    // 更新答案
+    pathMax = max(pathMax, leftMax + rightMax + root.val)
+    
+    //返回节点的最大贡献值
+    return max(leftMax , rightMax) + root.val
+}
+
+/* 70-------------------------------------------------- */
+
+/*
+ 题号：56. 合并区间
+ 出现频率：1
+ 难度：中等
+ */
+
+/*
+ 输入: intervals = [[1,3],[2,6],[8,10],[15,18]]
+ 输出: [[1,6],[8,10],[15,18]]
+ 解释: 区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+ */
+
+func merge(_ intervals: [[Int]]) -> [[Int]] {
+    if intervals.count <= 1 { return intervals }
+    
+    // 1. 排序
+    var list = intervals.sorted{ $0[0] < $1[0] }
+    var index = 1
+    
+    while index < list.count {
+        // 2. 拿到比较对象
+        let pre = list[index - 1]
+        let aft = list[index]
+        
+        // 3.分情况处理
+        
+        // 3.1 前一个区间包含后一个区间
+        if pre.last! > aft.last! {
+            list.remove(at: index)
+        }
+        // 3.2 前一个区间和后一个区间相交
+        else if aft.first! <= pre.last! {
+            list[index - 1] = [pre.first!, aft.last!]
+            list.remove(at: index)
+        }
+        // 3.3 比较下一位
+        else {
+            index = index + 1
+        }
+    }
+    return list
+}
+
+```
         
